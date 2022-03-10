@@ -49,28 +49,46 @@ window.addEventListener("DOMContentLoaded", function () {
 });
 
 const navList = document.querySelectorAll(".card-user--period_item");
+const navContainer = document.querySelector(".card-user--period");
 
-navList.forEach((item) => {
-  item.addEventListener("click", function (e) {
-    loadData(e.target);
+navContainer.addEventListener("click", function (e) {
+  const id = e.target.dataset.id;
 
-    if (e.target.id === "daily") {
-      previousTimeframe.map((item) => (item.innerText = "Yesterday"));
-      weekly.classList.remove("active");
-      monthly.classList.remove("active");
+  navList.forEach((item) => {
+    if (id) {
+      item.classList.remove("active");
       e.target.classList.add("active");
+      loadData(e.target);
+      previousTimeframe.map((item) => {
+        if (id === "daily") item.innerText = "Yesterday";
+        if (id === "weekly") item.innerText = "Last week";
+        if (id === "monthly") item.innerText = "Last month";
+      });
     }
-
-    if (e.target.id === "weekly")
-      previousTimeframe.map((item) => (item.innerText = "Last week"));
-    daily.classList.remove("active");
-    monthly.classList.remove("active");
-    e.target.classList.add("active");
-
-    if (e.target.id === "monthly")
-      previousTimeframe.map((item) => (item.innerText = "Last month"));
-    weekly.classList.remove("active");
-    daily.classList.remove("active");
-    e.target.classList.add("active");
   });
 });
+
+// navList.forEach((item) => {
+//   item.addEventListener("click", function (e) {
+//     loadData(e.target);
+
+//     if (e.target.id === "daily") {
+//       previousTimeframe.map((item) => (item.innerText = "Yesterday"));
+//       weekly.classList.remove("active");
+//       monthly.classList.remove("active");
+//       e.target.classList.add("active");
+//     }
+
+//     if (e.target.id === "weekly")
+//       previousTimeframe.map((item) => (item.innerText = "Last week"));
+//     daily.classList.remove("active");
+//     monthly.classList.remove("active");
+//     e.target.classList.add("active");
+
+//     if (e.target.id === "monthly")
+//       previousTimeframe.map((item) => (item.innerText = "Last month"));
+//     weekly.classList.remove("active");
+//     daily.classList.remove("active");
+//     e.target.classList.add("active");
+//   });
+// });

@@ -70,11 +70,13 @@ section {
 
       &_dots {
         cursor: pointer;
-        font-size: 1.2rem;
-        color: $color-neutral-light;
 
-        &:hover {
-          color: $color-white;
+        &-img {
+          display: block;
+
+          &:hover {
+            filter: brightness(100);
+          }
         }
       }
     }
