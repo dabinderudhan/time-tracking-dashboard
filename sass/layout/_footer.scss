@@ -1,0 +1,17 @@
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  background-color: $color-neutral-darkest;
+  padding: 2rem;
+  width: 375px;
+
+  & a {
+    color: hsl(228, 45%, 44%);
+  }
+}
+
+@media (min-width: 900px) {
+  .attribution {
+    background: none;
+  }
+}
