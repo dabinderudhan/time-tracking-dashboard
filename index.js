@@ -2,9 +2,11 @@ const daily = document.getElementById("daily");
 const weekly = document.getElementById("weekly");
 const monthly = document.getElementById("monthly");
 
-const [...currentHours] = document.querySelectorAll("#current");
-const [...previousHours] = document.querySelectorAll("#previous");
-const [...previousTimeframe] = document.querySelectorAll("#previous-timeframe");
+const [...currentHours] = document.querySelectorAll(
+  ".card-details--hours_current"
+);
+const [...previousHours] = document.querySelectorAll(".previous");
+const [...previousTimeframe] = document.querySelectorAll(".previous-timeframe");
 
 // fetch the data from local json file and store in data variable.
 async function fetchData() {
@@ -16,7 +18,7 @@ async function fetchData() {
 // function to load hours on the page.
 function loadHours(curPrevTimeframe, activity, timeframe) {
   curPrevTimeframe.innerText = `${
-    activity.timeframes[timeframe.id][curPrevTimeframe.id]
+    activity.timeframes[timeframe.id][curPrevTimeframe.dataset.class]
   }${
     activity.timeframes.daily.current > 1 ||
     activity.timeframes.daily.current === 0
